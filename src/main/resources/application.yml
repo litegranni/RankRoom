@@ -1,0 +1,39 @@
+server:
+  port: 8080
+
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/rankroomdb?useSSL=false&serverTimezone=UTC
+    username: root
+    password: Norrmejerier4
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+
+  security:
+    oauth2:
+      client:
+        registration:
+          cognito:
+            client-id: 3h3cbs9c78i33o41qkp1r3bnmb
+            client-name: RankRoom
+            client-secret: 1acvasek6dcpi964uejcq7trh1r2a14t9pouadda41p8hev28phg
+            provider: cognito
+            scope:
+              - openid
+              - email
+            authorization-grant-type: authorization_code
+            client-authentication-method: client_secret_post
+            redirect-uri: http://localhost:8080/login/oauth2/code/cognito
+
+        provider:
+          cognito:
+            issuer-uri: https://cognito-idp.eu-north-1.amazonaws.com/eu-north-1_Wf0a6TasN
+            user-name-attribute: username
+
+logging:
+  level:
+    org.springframework.security: DEBUG

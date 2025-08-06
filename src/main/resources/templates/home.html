@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Home page</title>
+</head>
+<body>
+
+<h1>Welcome to my page</h1>
+
+<p>You are so welcome</p>
+
+<p th:if="${loggedIn}">
+    Hello, <b th:text="${username}">user</b>!
+</p>
+
+<!-- OIDC attributes -->
+<div th:if="${loggedIn}">
+    <p>Here are all the OIDC properties you can use:</p>
+    <pre th:text="${#authentication.getPrincipal()}"></pre>
+</div>
+
+<!-- Logout form -->
+<form action="/logout" method="post" th:if="${loggedIn}">
+    <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
+    <input type="submit" value="Log out" />
+</form>
+
+<!-- Login link -->
+<p th:unless="${loggedIn}">
+    <a th:href="@{/oauth2/authorization/cognito}"><button>Log in</button></a>
+</p>
+
+</body>
+</html>
