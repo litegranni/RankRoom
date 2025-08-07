@@ -1,8 +1,8 @@
 package com.example.controllers;
 
+import com.example.repositories.UserRatingRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.oauth2.client.OAuth2AuthorizedClient;
 import org.springframework.security.oauth2.client.OAuth2AuthorizedClientService;
 import org.springframework.security.oauth2.client.authentication.OAuth2AuthenticationToken;
@@ -14,12 +14,14 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class HomeController {
 
-
     @Autowired
     private ClientRegistrationRepository clientRegistrationRepository;
 
     @Autowired
     private OAuth2AuthorizedClientService authorizedClientService;
+
+    @Autowired
+    private UserRatingRepository ratingRepository;  // 🟢 Lagt till detta!
 
     @GetMapping("/")
     public String getHomePage(Authentication auth, Model model) {
@@ -28,9 +30,9 @@ public class HomeController {
             model.addAttribute("loggedIn", false);
         } else {
             var username = auth.getName();
-
             model.addAttribute("loggedIn", true);
             model.addAttribute("username", username);
+            model.addAttribute("ratings", ratingRepository.findByUsername(username));  // 🟢 Lägg till ratings
         }
 
         return "home";
@@ -41,9 +43,6 @@ public class HomeController {
 
         var username = authentication.getName();
         var subject = authentication.getPrincipal().getAttribute("sub");
-
-        // Här finns användaruppgifter i
-        // OAuth2AuthenticationToken authentication
 
         return "redirect:/";
     }
