@@ -8,7 +8,7 @@ Detta projekt är en Spring Boot-applikation där användaren loggar in via **AW
 
 ---
 
-## 🛠 Teknikstack
+## Teknikstack
 
 - **Java 17**
 - **Spring Boot**
