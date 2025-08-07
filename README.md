@@ -2,9 +2,9 @@
 
 Detta projekt är en Spring Boot-applikation där användaren loggar in via **AWS Cognito** och sedan kan:
 
-- ✅ Spara ett filmnamn + betyg (0–10)
-- ✅ Visa tidigare sparade betyg (kopplade till inloggad användare)
-- ✅ Radera sina sparade betyg
+-  Spara ett filmnamn + betyg (0–10)
+-  Visa tidigare sparade betyg (kopplade till inloggad användare)
+-  Radera sina sparade betyg
 
 ---
 
@@ -21,14 +21,14 @@ Detta projekt är en Spring Boot-applikation där användaren loggar in via **AW
 
 ##  Funktionalitet
 
-| Funktion                              | Status |
-|---------------------------------------|--------|
-| Inloggning via Cognito                | ✅     |
-| Spara användarspecifik data           | ✅     |
-| CRUD (Create + Delete) för ratings   | ✅     |
-| Formulär med CSRF-skydd               | ✅     |
-| Logout med Cognito redirect           | ✅     |
-| Respons i webbläsare via Thymeleaf    | ✅     |
+| Funktion                             
+|---------------------------------------
+| Inloggning via Cognito
+| Spara användarspecifik data
+| CRUD (Create + Delete) för ratings
+| Formulär med CSRF-skydd
+| Logout med Cognito redirect 
+| Respons i webbläsare via Thymeleaf
 
 ---
 
